@@ -1,15 +1,15 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const connection = require('./connection');
+const app = express();
+
+let UserRouter = require('./UserRouter');
+
+app.use('/', UserRouter);
 
 dotenv.config();
 
 const port = process.env.PORT || 3000;
-const app = express();
-
-app.get('/', (req, res) => {
-    res.send('Olá Mundo!');
-});
 
 
 app.listen(port, () => {
